@@ -4,6 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 from langchain.chains.summarize import load_summarize_chain
 from langchain_community.document_loaders import YoutubeLoader, UnstructuredURLLoader
+from langchain_yt_dlp.youtube_loader import YoutubeLoaderDL
 
 # Page configuration
 st.set_page_config(
@@ -49,11 +50,7 @@ if st.button("Summarize"):
             # Process based on URL type
             with st.spinner("Loading content and generating summary..."):
                 if "youtube.com" in url:
-                    loader = YoutubeLoader.from_youtube_url(
-                        url, 
-                        add_video_info=True,
-                        continue_on_failure=True
-                    )
+                   loader = YoutubeLoaderDL.from_youtube_url(url, add_video_info=True)
                 else:
                     loader = UnstructuredURLLoader(
                         urls=[url],
