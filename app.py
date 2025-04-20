@@ -51,7 +51,8 @@ if st.button("Summarize"):
                 if "youtube.com" in url:
                     loader = YoutubeLoader.from_youtube_url(
                         url, 
-                        add_video_info=True
+                        add_video_info=True,
+                        continue_on_failure=True
                     )
                 else:
                     loader = UnstructuredURLLoader(
