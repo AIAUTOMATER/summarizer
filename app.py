@@ -71,7 +71,7 @@ if st.button("Summarize"):
                         prompt=prompt,
                     )
                     
-                    output = chain(data)
+                    output = chain.invoke(data)
                     
                     st.success(output)
                     
