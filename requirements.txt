@@ -8,3 +8,4 @@ langchain-community==0.3.21
 unstructured==0.17.2
 pytube==15.0.0
 youtube-transcript-api==1.0.3
+langchain-yt-dlp
