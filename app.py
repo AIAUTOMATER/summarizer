@@ -50,7 +50,11 @@ if st.button("Summarize"):
             # Process based on URL type
             with st.spinner("Loading content and generating summary..."):
                 if "youtube.com" in url:
-                   loader = YoutubeLoaderDL.from_youtube_url(url, add_video_info=True)
+                   loader = YoutubeLoader.from_youtube_url(
+                        url,
+                        add_video_info=True,
+                        continue_on_failure=True,   # ← don’t bail out if captions missing
+                    )
                 else:
                     loader = UnstructuredURLLoader(
                         urls=[url],
